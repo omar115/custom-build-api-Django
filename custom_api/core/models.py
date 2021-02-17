@@ -1,10 +1,13 @@
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 
+User = get_user_model()
 
 class Post(models.Model):
-    title = models.charField(max_length=100)
+    title = models.CharField(max_length=100)
     description = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
